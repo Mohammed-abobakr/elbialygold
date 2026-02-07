@@ -1,0 +1,18 @@
+workflows:
+  ios-workflow:
+    name: iOS Build
+    environment:
+      groups:
+        - appstore_credentials
+      flutter: stable
+    scripts:
+      - name: Get dependencies
+        script: flutter pub get
+      - name: Build iOS
+        script: flutter build ios --no-codesign
+    artifacts:
+      - build/ios/ipa/*.ipa
+    publishing:
+      email:
+        recipients:
+          - mohammedabobakr1973642850@gmail.com
